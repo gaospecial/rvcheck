@@ -28,7 +28,7 @@ check_r <- function() {
     r_latest_url <- paste(r_major_url, r_latest, sep='/')
 
 
-    r_installed_version <- paste0("R-", gsub('\\D+(\\d\\.\\d\\.\\d).*', '\\1', R.version.string))
+    r_installed_version <- getRversion()
 
     res <- list(installed_version = r_installed_version,
                 latest_version = r_latest_version,
