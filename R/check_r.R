@@ -1,6 +1,6 @@
 ##' check latest R version
 ##'
-##' 
+##'
 ##' @title check_r
 ##' @return list
 ##' @export
@@ -25,7 +25,7 @@ check_r <- function() {
     for(r_major in r) {
         r_major_url <- paste0(base_url, r_major)
         y <- readLines(r_major_url)
-        
+
         pattern <- "R-\\d\\.\\d\\.\\d\\.tar\\.gz"
         y <- y[grep(pattern, y)]
         r_version <- gsub(paste0('.*(', pattern, ').*'), '\\1', y)
@@ -38,7 +38,7 @@ check_r <- function() {
     r_latest_url <- paste(r_major_url, r_latest, sep='/')
 
 
-    r_installed_version <- getRversion()
+    r_installed_version <- paste0("R-", gsub('\\D+(\\d\\.\\d\\.\\d).*', '\\1', R.version.string))
 
     res <- list(installed_version = r_installed_version,
                 latest_version = r_latest_version,
